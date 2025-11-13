@@ -66,7 +66,7 @@ int main() {
     fpattern = fopen("pattern.txt", "r");
 
     if (ftext == NULL || fpattern == NULL) {
-        printf("⚠️ Error: Could not open input files.\n");
+        printf(" Error: Could not open input files.\n");
         return 1;
     }
 
@@ -77,7 +77,7 @@ int main() {
 
     // Read pattern safely
     if (fgets(pat, sizeof(pat), fpattern) == NULL) {
-        printf("⚠️ Error reading pattern file.\n");
+        printf(" Error reading pattern file.\n");
         fclose(fpattern);
         return 1;
     }
@@ -87,7 +87,7 @@ int main() {
     pat[strcspn(pat, "\n")] = '\0';
 
     if (strlen(pat) == 0) {
-        printf("⚠️ Pattern file is empty!\n");
+        printf(" Pattern file is empty!\n");
         return 1;
     }
 
@@ -103,19 +103,20 @@ int main() {
 
     // Print results
     if (total_found > 0) {
-        printf("✅ Pattern found %d time(s).\n", total_found);
-        printf("📍 First few positions: ");
+        printf(" Pattern found %d time(s).\n", total_found);
+        printf(" First few positions: ");
         for (int i = 0; i < total_found && i < 20; i++)
             printf("%d ", positions[i]);
         if (total_found > 20)
             printf("... (only first 20 shown)");
         printf("\n");
     } else {
-        printf("❌ Pattern not found in the text.\n");
+        printf(" Pattern not found in the text.\n");
     }
 
-    printf("\n🧠 Total character comparisons: %d\n", comparisons);
-    printf("⏱️  Execution time: %.3f ms\n", time_taken);
+    printf("\n Total character comparisons: %d\n", comparisons);
+    printf("  Execution time: %.3f ms\n", time_taken);
 
     return 0;
 }
+
